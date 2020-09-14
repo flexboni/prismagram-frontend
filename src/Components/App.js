@@ -1,9 +1,15 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { Component } from "react";
+import GlobalStyles from "../Styles/GlobalStyles";
+import { ThemeProvider } from "styled-components";
+import Theme from "../Styles/Theme";
+import Router from "./Router";
 
-function App() {
-  return <div className="App" />;
-}
-
-export default App;
+export default () => (
+  <ThemeProvider theme={Theme}>
+    <GlobalStyles />
+    <>
+      <GlobalStyles />
+      <Router isLoggedIn={false} />
+    </>
+  </ThemeProvider>
+);
