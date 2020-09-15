@@ -1,23 +1,47 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Box = styled.div`
-    ${props => props.theme.whiteBox}
+  ${(props) => props.theme.whiteBox}
+  border-radius:0px;
+  widt: 350px;
+`;
+
+const StateChanger = styled(Box)`
+  text-align: center;
+  padding: 20px 0px;
+`;
+
+const Link = styled.span`
+  color: ${(props) => props.theme.blueColor};
+  cursor: pointer;
 `;
 
 export default () => {
-    const [action, setAction] = useState("login");
+  const [action, setAction] = useState("login");
 
-    return (
-        <Wrapper>  
-            {action === "login" ? <Box>Log In</Box> : <Box>Sign Up</Box>}
-        </Wrapper>
-    );
+  return (
+    <Wrapper>
+      <StateChanger>
+        {action === "logIn" ? (
+          <>
+            Don't have an account?{" "}
+            <Link onClick={() => setAction("signUp")}>Sign Up</Link>
+          </>
+        ) : (
+          <>
+            Have a account?{" "}
+            <Link onClick={() => setAction("logIn")}>Log In</Link>
+          </>
+        )}
+      </StateChanger>
+    </Wrapper>
+  );
 };
