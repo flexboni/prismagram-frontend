@@ -16,4 +16,7 @@ export default createGlobalStyle`
         color:${(props) => props.theme.blueColor};
         text-decoration:none;
     }
+    inpuut:focus{
+        outline:none;
+    }
 `;
