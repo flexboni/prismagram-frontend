@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
+import useInput from "../Hooks/useInput";
 
 const Wrapper = styled.div`
   min-height: 80vh;
@@ -24,7 +25,7 @@ const StateChanger = styled(Box)`
 `;
 
 const Link = styled.span`
-  color: ${props => props.theme.blueColor};
+  color: ${(props) => props.theme.blueColor};
   cursor: pointer;
 `;
 
@@ -48,23 +49,28 @@ const Form = styled(Box)`
 
 export default () => {
   const [action, setAction] = useState("login");
+  const userName = useInput("");
+  const password = useInput("");
+  const firstName = useInput("");
+  const lastName = useInput("");
+  const email = useInput("");
 
   return (
     <Wrapper>
       <Form>
         {action === "logIn" ? (
           <form>
-            <Input placeholder={"Username"} />
-            <Input placeholder={"Password"} />
+            <Input placeholder={"Username"} {...userName} />
+            <Input placeholder={"Password"} {...password} type="password" />
             <Button text={"Log in"} />
           </form>
         ) : (
           <form>
-            <Input placeholder={"First name"} />
-            <Input placeholder={"Last name"} />
-            <Input placeholder={"Email"} />
-            <Input placeholder={"Username"} />
-            <Input placeholder={"Password"} />
+            <Input placeholder={"First name"} {...firstName} />
+            <Input placeholder={"Last name"} {...lastName}/>
+            <Input placeholder={"Email"} {...email} type="email"/>
+            <Input placeholder={"Username"} {...userName} />
+            <Input placeholder={"Password"} {...password} type="password"/>
             <Button text={"Sign up"} />
           </form>
         )}
