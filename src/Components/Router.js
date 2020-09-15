@@ -4,10 +4,9 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Auth from "../Routes/Auth";
 import Feed from "../Routes/Feed";
 
-
 const LoggedInRoutes = () => (
   <>
-    <Route exact path="/" component={Feed}></Route>
+    <Route exact path="/" component={Feed} />
   </>
 );
 
@@ -24,7 +23,7 @@ const AppRouter = ({ isLoggedIn }) => (
 );
 
 AppRouter.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default AppRouter;
