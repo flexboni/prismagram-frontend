@@ -5,6 +5,9 @@ export default new ApolloClient({
   uri: "http://localhost:4003",
   clientState: {
     defaults,
-    resolvers
-  }
+    resolvers,
+  },
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
 });

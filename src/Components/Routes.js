@@ -18,8 +18,8 @@ const LoggedInRoutes = () => (
 
 const LoggedOutRoutes = () => (
   <Switch>
-    {/* <Route exact path="/" component={Auth} /> */}
-    <Route exact path="/" component={Feed} />
+    <Route exact path="/" component={Auth} />
+    {/* <Route exact path="/" component={Feed} /> */}
   </Switch>
 );
 
