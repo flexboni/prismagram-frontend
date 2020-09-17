@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import useInput from "../Hooks/useInput";
 import { Link, withRouter } from "react-router-dom";
-import Input from "./Input";
-import { Logo, Compass, HeartEmpty, User } from "../Components/Icons";
 import { gql } from "apollo-boost";
+import Input from "./Input";
+import useInput from "../Hooks/useInput";
+import { Compass, HeartEmpty, User, Logo } from "./Icons";
 import { useQuery } from "react-apollo-hooks";
 
 const Header = styled.header`
@@ -27,6 +27,7 @@ const HeaderWrapper = styled.div`
   max-width: ${(props) => props.theme.maxWidth};
   display: flex;
   justify-content: center;
+  z-index: 2;
 `;
 
 const HeaderColumn = styled.div`
@@ -37,7 +38,7 @@ const HeaderColumn = styled.div`
     text-align: left;
   }
   &:last-child {
-    margin-right: auto;
+    margin-left: auto;
     text-align: right;
   }
 `;
@@ -49,10 +50,10 @@ const SearchInput = styled(Input)`
   border-radius: 3px;
   height: auto;
   text-align: center;
-  width: 70%
+  width: 70%;
   &::placeholder {
-      opacity: 0.8;
-      font-weight: 200;
+    opacity: 0.8;
+    font-weight: 200;
   }
 `;
 
@@ -77,7 +78,6 @@ export default withRouter(({ history }) => {
     e.preventDefault();
     history.push(`/search?term=${search.value}`);
   };
-
   return (
     <Header>
       <HeaderWrapper>
