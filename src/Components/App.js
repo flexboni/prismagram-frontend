@@ -10,27 +10,30 @@ import Theme from "../Styles/Theme";
 import Routes from "./Routes";
 import Footer from "./Footer";
 import Header from "./Header";
+
 const QUERY = gql`
   {
     isLoggedIn @client
   }
 `;
+
 const Wrapper = styled.div`
   margin: 0 auto;
   max-width: ${props => props.theme.maxWidth};
   width: 100%;
 `;
+
 export default () => {
   const {
     data: { isLoggedIn }
   } = useQuery(QUERY);
+
   return (
     <ThemeProvider theme={Theme}>
       <>
         <GlobalStyles />
         <Router>
           <>
-            <Header />
             {isLoggedIn && <Header />}
             <Wrapper>
               <Routes isLoggedIn={isLoggedIn} />

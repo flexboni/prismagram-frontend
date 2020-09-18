@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 `;
 
 const Box = styled.div`
-  ${(props) => props.theme.whiteBox}
+  ${props => props.theme.whiteBox}
   border-radius:0px;
   width: 100%;
   max-width: 350px;
@@ -25,7 +25,7 @@ const StateChanger = styled(Box)`
 `;
 
 const Link = styled.span`
-  color: ${(props) => props.theme.blueColor};
+  color: ${props => props.theme.blueColor};
   cursor: pointer;
 `;
 
@@ -55,7 +55,7 @@ export default ({
   email,
   setAction,
   onSubmit,
-  secret,
+  secret
 }) => (
   <Wrapper>
     <Form>

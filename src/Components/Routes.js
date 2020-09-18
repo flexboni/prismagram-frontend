@@ -12,14 +12,13 @@ const LoggedInRoutes = () => (
     <Route exact path="/" component={Feed} />
     <Route path="/explore" component={Explore} />
     <Route path="/search" component={Search} />
-    <Route path="/profile" component={Profile} />
+    <Route path="/:username" component={Profile} />
   </Switch>
 );
 
 const LoggedOutRoutes = () => (
   <Switch>
     <Route exact path="/" component={Auth} />
-    {/* <Route exact path="/" component={Feed} /> */}
   </Switch>
 );
 
@@ -27,7 +26,7 @@ const AppRouter = ({ isLoggedIn }) =>
   isLoggedIn ? <LoggedInRoutes /> : <LoggedOutRoutes />;
 
 AppRouter.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
 };
 
 export default AppRouter;

@@ -6,9 +6,10 @@ import Avatar from "../Avatar";
 import { HeartFull, HeartEmpty, Comment } from "../Icons";
 
 const Post = styled.div`
-  ${(props) => props.theme.whiteBox};
+  ${props => props.theme.whiteBox};
   width: 100%;
   max-width: 600px;
+  user-select: none;
   margin-bottom: 25px;
 `;
 
@@ -37,16 +38,16 @@ const Files = styled.div`
   flex-shrink: 0;
 `;
 
-const File = styled.img`
+const File = styled.div`
   max-width: 100%;
   width: 100%;
   height: 600px;
   position: absolute;
   top: 0;
-  background-image: url(${(props) => props.src}});
+  background-image: url(${props => props.src}});
   background-size: cover;
   background-position: center;
-  opacity: ${(props) => (props.showing ? 1 : 0)};
+  opacity: ${props => (props.showing ? 1 : 0)};
   transition: opacity 0.5s linear;
 `;
 
@@ -75,7 +76,7 @@ const Timestamp = styled.span`
   font-size: 12px;
   margin: 10px 0px;
   padding-bottom: 10px;
-  border-bottom: ${(props) => props.theme.lightGreyColor} 1px solid;
+  border-bottom: ${props => props.theme.lightGreyColor} 1px solid;
 `;
 
 const Textarea = styled(TextareaAutosize)`
@@ -97,6 +98,7 @@ export default ({
   createdAt,
   newComment,
   currentItem,
+  toggleLike
 }) => (
   <Post>
     <Header>
@@ -109,19 +111,21 @@ export default ({
     <Files>
       {files &&
         files.map((file, index) => (
-          <File id={file.id} src={file.url} showing={index === currentItem} />
+          <File key={file.id} src={file.url} showing={index === currentItem} />
         ))}
     </Files>
     <Meta>
       <Buttons>
-        <Button>{isLiked ? <HeartFull /> : <HeartEmpty />}</Button>
+        <Button onClick={toggleLike}>
+          {isLiked ? <HeartFull /> : <HeartEmpty />}
+        </Button>
         <Button>
           <Comment />
         </Button>
       </Buttons>
       <FatText text={likeCount === 1 ? "1 like" : `${likeCount} likes`} />
       <Timestamp>{createdAt}</Timestamp>
-      <Textarea placeholder={"Add a comment..."} {...newComment}/>
+      <Textarea placeholder={"Add a comment..."} {...newComment} />
     </Meta>
   </Post>
 );
