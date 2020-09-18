@@ -1,5 +1,5 @@
 import React from "react";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
@@ -87,7 +87,7 @@ export default ({
       {action === "confirm" && (
         <>
           <Helmet>
-            <title>Confrim Secret | Prismagram</title>
+            <title>Confirm Secret | Prismagram</title>
           </Helmet>
           <form onSubmit={onSubmit}>
             <Input placeholder="Paste your secret" required {...secret} />
