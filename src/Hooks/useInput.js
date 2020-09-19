@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-export default defaultValue => {
+export default (defaultValue) => {
   const [value, setValue] = useState(defaultValue);
 
-  const onChange = e => {
+  const onChange = (e) => {
     const {
-      target: { value }
+      target: { value },
     } = e;
     setValue(value);
   };
 
-  return { value, onChange };
+  return { value, onChange, setValue };
 };
